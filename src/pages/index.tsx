@@ -1,4 +1,4 @@
-import { FeatureHome } from '@/features/feature-home';
+import { FeatureHome } from '@/features';
 import { HomePageLayout } from '@/layouts';
 
 const Home = () => <FeatureHome />;
