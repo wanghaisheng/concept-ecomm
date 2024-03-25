@@ -321,7 +321,7 @@ const config: Config = {
         ...theme('colors'),
       }),
       backgroundImage: {
-        'landing-background': `url('${process.env.NEXT_PUBLIC_IMAGE_BASE_URL ?? ''}/background.png')`,
+        'landing-background': `url('${process.env.NEXT_PUBLIC_PATH_PREFIX ?? ''}/background.png')`,
       },
       borderRadius: {
         none: '0',
