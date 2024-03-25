@@ -1,10 +1,56 @@
-import { TopHeader } from '@/components';
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 
-export const FeatureHome = () => (
-  <div className="min-h-full min-w-full flex-col">
-    <TopHeader />
-    <div className="m-auto flex min-h-full w-fit flex-auto flex-col items-start justify-center leading-heavy">
-      <div className="text-h1 font-heavy text-secondary-lightBlue">FRONT-END DEV.</div>
+import { TopHeader } from '@/components';
+import Navbar from '@/components/ui/NavBar';
+
+import { Cart } from './Cart';
+import { Home } from './Home';
+import { Plant } from './Plant';
+import { Settings } from './Settings';
+
+export const FeatureHome = () => {
+  const router = useRouter();
+  const [activeTab, setActiveTab] = useState(router.query.tabs || undefined);
+
+  useEffect(() => {
+    if (router.query.tabs) {
+      setActiveTab(router.query.tabs as string);
+    } else {
+      setActiveTab('home');
+      router.push(
+        {
+          pathname: router.pathname,
+          query: { ...router.query, tabs: activeTab },
+        },
+        undefined,
+        { shallow: true }
+      );
+    }
+  }, [router.query.tabs]);
+
+  const selectTab = (): React.ReactNode => {
+    switch (activeTab) {
+      case 'home':
+        return <Home />;
+      case 'plants':
+        return <Plant />;
+      case 'cart':
+        return <Cart />;
+      case 'settings':
+        return <Settings />;
+      default:
+        return <Home />;
+    }
+  };
+
+  return (
+    <div className="min-h-full min-w-full flex-col">
+      <TopHeader />
+      <div className="relative flex h-full min-w-full items-start justify-center   pt-[40px]">
+        <Navbar activeTab={activeTab} />
+        <div className="flex h-[calc(100%-40px)] w-full max-w-[1072px] flex-col">{selectTab()}</div>
+      </div>
     </div>
-  </div>
-);
+  );
+};

@@ -23,7 +23,7 @@ const buttonVariants = cva(['inline-flex justify-center items-center rounded-[10
       'filled-grey':
         'px-[32px] min-w-[113px] gap-[12px] stroke-primary-dark-blue bg-primary-dark-blue bg-opacity-7 text-primary-dark-blue hover:bg-secondary-light-gray active:bg-primary-dark-blue active:text-white active:stroke-white active:fill-white disabled:bg-primary-dark-blue disabled:bg-opacity-7 disabled:text-primary-light-gray disabled:stroke-primary-light-gray disabled:fill-primary-light-gray',
       'filled-white':
-        'px-[32px] min-w-[113px] bg-white text-primary-dark-blue hover:bg-secondary-light-gray hover:bg-opacity-30 active:bg-secondary-light-gray',
+        'px-[24px] min-w-[113px] hover:shadow-lg bg-white text-black text-center  font-semibold  hover:bg-secondary-light-gray hover:bg-opacity-30 active:bg-secondary-light-gray',
       'filled-white-shadow':
         'px-[24px] min-w-[113px] bg-white shadow-7 text-primary-blue hover:shadow-2 hover:text-secondary-blue-hover active:border active:border-solid active:secondary-light-gray',
       'filled-blue':
@@ -36,7 +36,7 @@ const buttonVariants = cva(['inline-flex justify-center items-center rounded-[10
       32: 'h-[32px] text-[14px] font-semibold leading-normal',
       40: 'h-[40px] text-[16px] leading-[19.2px]',
       48: 'h-[48px] text-[16px] leading-[19.2px]',
-      56: 'h-[56px] text-[18px] leading-[20.16px]',
+      52: 'h-[52px] text-[16px] leading-[24px]',
     },
   },
 });
@@ -53,7 +53,7 @@ export interface IButtonProps
 }
 const Button = ({
   className,
-  size = 56,
+  size = 52,
   variant = 'primary',
   isDisabled,
   children,

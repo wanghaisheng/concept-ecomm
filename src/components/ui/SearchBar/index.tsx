@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import { InputHTMLAttributes, useRef, useState } from 'react';
 import { useGSAP } from '@gsap/react';
 import { cva, VariantProps } from 'class-variance-authority';
@@ -11,9 +10,9 @@ import { cn } from '@/utils/cn';
 const searchFIeldVariants = cva(['h-12'], {
   variants: {
     variant: {
-      gray: 'border appearance-none h-12 hover:shadow-lg  border-primary-gray py-3 px-4 bg-transparent w-[150px] text-sm leading-5 placeholder-gray-400 text-black   rounded-full p-4 block  pr-9  focus:border-primary-darkGray focus:outline-none focus:shadow-none focus:border-primary-darkGray focus:ring-offset-0',
+      gray: 'border appearance-none h-12 hover:shadow-lg  border-primary-gray py-3 px-4 bg-transparent w-[150px] text-sm leading-5 placeholder-gray-400 text-black   rounded-full p-4 block  pr-9   focus:outline-none focus:shadow-lg  focus:ring-offset-0',
       light:
-        'border appearance-none h-12  hover:shadow-lg border-primary-light-gray py-3 px-4 bg-white w-[150px] text-sm leading-5 placeholder-gray-400 text-black   rounded-full p-4 block  pr-9  focus:outline-none focus:shadow-none focus:border-primary-darkGray focus:ring-offset-0 ',
+        'border appearance-none h-12  hover:shadow-lg border-primary-light-gray py-3 px-4 bg-white w-[150px] text-sm leading-5 placeholder-gray-400 text-black   rounded-full p-4 block  pr-9  focus:outline-none focus:shadow-lg  focus:ring-offset-0 ',
     },
   },
 });
