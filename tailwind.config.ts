@@ -1,4 +1,5 @@
 import type { Config } from 'tailwindcss';
+import plugin from 'tailwindcss/plugin';
 
 const config: Config = {
   content: [
@@ -252,6 +253,12 @@ const config: Config = {
         ],
       },
     },
+    textShadow: {
+      md: '1px 1px 2px 0px #00000040',
+      DEFAULT: '2px 2px 4px var(--tw-shadow-color)',
+      lg: '1px 1px 2px 0px #00000040',
+      xl: '4px 4px 16px var(--tw-shadow-color)',
+    },
     opacity: {
       '0': '0',
       '10': '0.1',
@@ -348,6 +355,21 @@ const config: Config = {
       strategy: 'class',
     }),
     require('tailwindcss-border-gradients')(),
+    plugin(function ({ addUtilities, theme }: any) {
+      const textShadowUtilities = Object.entries(theme('textShadow')).reduce(
+        (acc, [name, value]) => {
+          return {
+            ...acc,
+            [`.drop-shadow-${name}`]: {
+              textShadow: value,
+            },
+          };
+        },
+        {}
+      );
+
+      addUtilities(textShadowUtilities);
+    }),
   ],
 };
 export default config;
