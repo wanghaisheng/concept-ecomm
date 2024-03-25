@@ -9,7 +9,7 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   },
   output: 'export',
-  basePath: '/concept-ecomm',
+  basePath: '/',
   images: {
     unoptimized: true,
   },
