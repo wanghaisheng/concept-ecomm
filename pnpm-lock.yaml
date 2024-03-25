@@ -82,9 +82,6 @@ devDependencies:
   eslint-config-prettier:
     specifier: ^9.1.0
     version: 9.1.0(eslint@8.57.0)
-  eslint-plugin-cypress:
-    specifier: ^2.15.1
-    version: 2.15.1(eslint@8.57.0)
   eslint-plugin-import:
     specifier: ^2.29.1
     version: 2.29.1(@typescript-eslint/parser@7.3.1)(eslint@8.57.0)
@@ -3412,15 +3409,6 @@ packages:
       eslint-import-resolver-node: 0.3.9
     transitivePeerDependencies:
       - supports-color
-    dev: true
-
-  /eslint-plugin-cypress@2.15.1(eslint@8.57.0):
-    resolution: {integrity: sha512-eLHLWP5Q+I4j2AWepYq0PgFEei9/s5LvjuSqWrxurkg1YZ8ltxdvMNmdSf0drnsNo57CTgYY/NIHHLRSWejR7w==}
-    peerDependencies:
-      eslint: '>= 3.2.1'
-    dependencies:
-      eslint: 8.57.0
-      globals: 13.24.0
     dev: true
 
   /eslint-plugin-es-x@7.6.0(eslint@8.57.0):

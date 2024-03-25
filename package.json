@@ -10,8 +10,7 @@
     "prepare": "husky install",
     "check-format": "prettier --check .",
     "check-lint": "eslint . --ext ts --ext tsx --ext js",
-    "format": "prettier --write \"**/*.{js,jsx,ts,tsx}\"",
-    "test-all": "pnpm check-format pnpm build"
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx}\""
   },
   "dependencies": {
     "react": "^18",
@@ -44,7 +43,6 @@
     "eslint-config-airbnb-typescript": "^18.0.0",
     "eslint-config-love": "^43.1.0",
     "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-cypress": "^2.15.1",
     "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-jsx-a11y": "^6.8.0",
     "eslint-plugin-n": "^16.6.2",
@@ -62,12 +60,6 @@
     "prettier-plugin-svelte": "^3.2.2",
     "prettier-plugin-tailwindcss": "^0.5.11"
   },
-  "testPathIgnorePatterns": [
-    "/node_modules/",
-    "/integrations/",
-    "/standalone-cli/",
-    "\\.test\\.skip\\.js$"
-  ],
   "lint-staged": {
     "*.{js,ts,jsx,tsx}": [
       "pnpm format",
