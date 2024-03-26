@@ -29,7 +29,7 @@ export const Plant = () => {
 
   return (
     <>
-      <div className="mt-[25%] flex h-full max-h-[40%] items-center justify-center xs:mt-[8%] sm:mt-[10%] sm:max-h-[52%] md:mt-0  md:max-h-[72%] lg:mt-0 lg:max-h-[72%]">
+      <div className="mt-[25%] flex h-full max-h-[40%] items-center justify-center xs:mt-[8%] sm:mt-[10%] sm:max-h-[52%] md:mt-0  md:max-h-[62%] lg:mt-0 lg:max-h-[72%]">
         <div className="h-full  w-full">
           <Swiper
             effect="coverflow"
