@@ -12,6 +12,7 @@ const buttonVariants = cva(['inline-flex justify-center items-center rounded-[10
       primary:
         'bg-primary-blue hover:bg-secondary-blue-hover text-white active:bg-primary-dark-blue disabled:bg-secondary-light-gray min-w-[145px]',
       icon: 'bg-background-white/80  bg-blend-color-dodge shadow-sm hover:shadow-lg max-h-[44px]  h-[44px] hover:bg-blend-color-lighten h-[44px]  w-[44px] rounded-full p-s10',
+      unstyled: '',
       'outline-white':
         'px-[32px] min-w-[113px] border-2 border-solid border-white hover:bg-white hover:bg-opacity-20 text-white active:bg-white active:border-2 active:border-solid active:border-primary-dark-blue active:text-primary-dark-blue',
       'outline-black':
