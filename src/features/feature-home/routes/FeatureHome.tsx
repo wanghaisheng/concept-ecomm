@@ -14,20 +14,24 @@ export const FeatureHome = () => {
   const [activeTab, setActiveTab] = useState(router.query.tabs || undefined);
 
   useEffect(() => {
-    if (router.query.tabs) {
-      setActiveTab(router.query.tabs as string);
-    } else {
-      setActiveTab('home');
-      router.push(
-        {
-          pathname: router.pathname,
-          query: { ...router.query, tabs: activeTab },
-        },
-        undefined,
-        { shallow: true }
-      );
+    if (router.isReady) {
+      // Check if the 'tabs' query parameter is present and not undefined
+      if (router.query.tabs) {
+        setActiveTab(router.query.tabs as string);
+      } else {
+        // If 'tabs' is not present, set the default tab and update the URL
+        setActiveTab('home');
+        router.push(
+          {
+            pathname: router.pathname,
+            query: { ...router.query, tabs: 'home' },
+          },
+          undefined,
+          { shallow: true }
+        );
+      }
     }
-  }, [router.query.tabs]);
+  }, [router.isReady, router.query.tabs]);
 
   const selectTab = (): React.ReactNode => {
     switch (activeTab) {
@@ -47,7 +51,7 @@ export const FeatureHome = () => {
   return (
     <div className="min-h-full min-w-full flex-col">
       <TopHeader />
-      <div className="relative flex h-full min-w-full items-start justify-center   pt-[40px]">
+      <div className="relative flex h-full min-w-full items-start justify-center pt-[40px]">
         <Navbar activeTab={activeTab} />
         <div className="flex h-[calc(100%-40px)] w-full max-w-[1072px] flex-col">{selectTab()}</div>
       </div>
