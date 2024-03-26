@@ -71,7 +71,7 @@ export const Plant = () => {
                     alt={`carousel-image-${index}`}
                     width={525}
                     height={500}
-                    className="md:h-300 mb-8 h-auto w-[300px] sm:mb-0 md:mb-0 md:w-[300px] lg:mb-0"
+                    className="mb-8 h-[300px] w-[300px] sm:mb-0 sm:h-[300px] sm:w-[300px] md:mb-0 md:h-[280px] md:w-[525px] lg:mb-0 lg:h-[350px] lg:w-[525px]"
                   />
                   <div className="absolute bottom-0 w-full text-center">
                     {index !== activeSlideIndex ? (
