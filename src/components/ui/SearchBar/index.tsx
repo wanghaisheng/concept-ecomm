@@ -12,7 +12,7 @@ const searchFIeldVariants = cva(['h-12'], {
     variant: {
       gray: 'border appearance-none h-12 hover:shadow-lg  border-primary-gray py-3 px-4 bg-transparent w-[150px] text-sm leading-5 placeholder-gray-400 text-black   rounded-full p-4 block  pr-9   focus:outline-none focus:shadow-lg  focus:ring-offset-0',
       light:
-        'border appearance-none h-12  hover:shadow-lg border-primary-light-gray py-3 px-4 bg-white w-[150px] text-sm leading-5 placeholder-gray-400 text-black   rounded-full p-4 block  pr-9  focus:outline-none focus:shadow-lg  focus:ring-offset-0 ',
+        'border appearance-none h-12  hover:shadow-lg border-primary-light-gray py-3 px-4 bg-white xs:w-[100px] w-[150px] text-sm leading-5 placeholder-gray-400 text-black   rounded-full p-4 block  pr-9  focus:outline-none focus:shadow-lg  focus:ring-offset-0 ',
     },
   },
 });
@@ -37,7 +37,21 @@ export const SearchBar = ({
 
   useGSAP(
     () => {
-      if (focus) {
+      if (window.matchMedia('(max-width: 320px)').matches) {
+        if (focus) {
+          gsap.to(searchBarRef.current, {
+            width: '200px',
+            duration: 0.5,
+            ease: 'power1.out',
+          });
+        } else {
+          gsap.to(searchBarRef.current, {
+            width: '140px',
+            duration: 0.5,
+            ease: 'power1.out',
+          });
+        }
+      } else if (focus) {
         gsap.to(searchBarRef.current, {
           width: '260px',
           duration: 0.5,

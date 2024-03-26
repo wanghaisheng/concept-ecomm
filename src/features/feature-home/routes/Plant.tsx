@@ -29,7 +29,7 @@ export const Plant = () => {
 
   return (
     <>
-      <div className="mt-[25%] flex h-full max-h-[40%] items-center justify-center sm:mt-[10%] sm:max-h-[52%] md:mt-0  md:max-h-[72%] lg:mt-0 lg:max-h-[72%]">
+      <div className="mt-[25%] flex h-full max-h-[40%] items-center justify-center xs:mt-[8%] sm:mt-[10%] sm:max-h-[52%] md:mt-0  md:max-h-[62%] lg:mt-0 lg:max-h-[72%]">
         <div className="h-full  w-full">
           <Swiper
             effect="coverflow"
@@ -71,7 +71,7 @@ export const Plant = () => {
                     alt={`carousel-image-${index}`}
                     width={525}
                     height={500}
-                    className="mb-8 h-[300px] w-[300px] sm:mb-0 sm:h-[300px] sm:w-[300px] md:mb-0 md:h-[280px] md:w-[525px] lg:mb-0 lg:h-[350px] lg:w-[525px]"
+                    className="mb-8 h-[300px] w-[300px] xs:h-[200px] xs:w-[250px] sm:mb-0 sm:h-[300px] sm:w-[300px] md:mb-0 md:h-[280px] md:w-[525px] lg:mb-0 lg:h-[350px] lg:w-[525px]"
                   />
                   <div className="absolute bottom-0 w-full text-center">
                     {index !== activeSlideIndex ? (
