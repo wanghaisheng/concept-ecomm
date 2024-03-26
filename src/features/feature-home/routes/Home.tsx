@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import gsap from 'gsap';
 
+import AnimatedText from '@/components/common/AnimatedText';
+
 export const Home = () => {
   const text = 'Welcome to The Plant Shop.';
   const router = useRouter();
@@ -35,18 +37,12 @@ export const Home = () => {
 
   return (
     <>
-      <div className="h-[72%] pt-s48  text-7xl font-heavy leading-bold drop-shadow-lg">
-        <div className="flex w-full items-start  justify-center ">
-          {text.split('').map((letter) => {
-            return letter === ' ' ? (
-              <div className="letter invisible">&nbsp;</div>
-            ) : (
-              <div className="letter invisible" key={letter}>
-                {letter}
-              </div>
-            );
-          })}
-        </div>
+      <div className="h-[72%] pt-s48  ">
+        <AnimatedText
+          textClassName="text-7xl font-heavy leading-none drop-shadow-lg"
+          tab="home"
+          text={text}
+        />
       </div>
       <div className="flex justify-center  pt-s12" />
     </>
