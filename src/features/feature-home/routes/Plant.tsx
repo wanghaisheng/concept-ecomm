@@ -35,7 +35,6 @@ export const Plant = () => {
             effect="coverflow"
             grabCursor
             centeredSlides
-            // slidesPerView={3}
             coverflowEffect={{
               rotate: 0,
               scale: 0.8,
