@@ -22,6 +22,7 @@
     "qs": "^6.11.2",
     "react": "^18",
     "react-dom": "^18",
+    "swiper": "^11.0.7",
     "tailwind-merge": "^2.2.1",
     "tailwindcss-border-gradients": "^2.0.3"
   },
