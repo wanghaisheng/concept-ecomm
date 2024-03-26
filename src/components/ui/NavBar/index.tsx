@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { useRouter } from 'next/router';
 
 import CartIcon from '@/components/ui/Icons/24/icons/cart.svg';
@@ -36,6 +36,7 @@ const tabItems: VerticalTabItem[] = [
 
 const Navbar = ({ activeTab }: NavbarProps) => {
   const router = useRouter();
+  const activeTabRef = useRef<HTMLDivElement | null>(null);
 
   const handleTabClick = (tab: string) => {
     router.push(
@@ -60,7 +61,8 @@ const Navbar = ({ activeTab }: NavbarProps) => {
           {tabItems.map((d) => (
             <div
               key={d.link}
-              className={`flex h-[44px] w-[44px] cursor-pointer items-center justify-center rounded-full hover:bg-gray-300/40 ${activeTab === d.link ? 'bg-gray-300/60' : ''}`}
+              ref={activeTab === d.link ? activeTabRef : null}
+              className={`flex h-[44px] w-[44px] cursor-pointer items-center justify-center rounded-full hover:bg-gray-300/40 ${activeTab === d.link ? 'bg-gray-300/40 shadow-lg' : ''}`}
               onClick={() => handleTabClick(d.link)}
               onKeyDown={(event) => handleKeyDown(event, d.link)}
               role="button"
