@@ -8,23 +8,43 @@ interface AnimatedTextProps {
   text: string;
   tab: string;
   textClassName?: string;
-  positionValue?: number;
+  positionYValue?: number;
+  positionXValue?: number;
 }
 
-const AnimatedText = ({ text, tab, textClassName, positionValue }: AnimatedTextProps) => {
+const AnimatedText = ({
+  text,
+  tab,
+  textClassName,
+  positionYValue,
+  positionXValue,
+}: AnimatedTextProps) => {
   const router = useRouter();
 
   useEffect(() => {
     const handleLoad = () => {
       if (router.query.tabs === tab) {
         const textAnimation = gsap.timeline();
-        textAnimation.to('.letter', {
-          autoAlpha: 1,
-          y: positionValue ?? 50,
-          stagger: {
-            each: 0.06,
-          },
-        });
+        // Check if the screen width is less than or equal to 640px (small screen)
+        if (window.matchMedia('(max-width: 640px)').matches) {
+          // Apply x: 10 for small screens
+          textAnimation.to('.letter', {
+            autoAlpha: 1,
+            x: positionXValue ?? 5, // Use x instead of y for small screens
+            stagger: {
+              each: 0.06,
+            },
+          });
+        } else {
+          // Apply y: positionValue ?? 50 for larger screens
+          textAnimation.to('.letter', {
+            autoAlpha: 1,
+            y: positionYValue ?? 50,
+            stagger: {
+              each: 0.06,
+            },
+          });
+        }
       }
     };
     if (document.readyState === 'complete') {
