@@ -62,7 +62,7 @@ const Navbar = ({ activeTab }: NavbarProps) => {
             <div
               key={d.link}
               ref={activeTab === d.link ? activeTabRef : null}
-              className={`flex h-[44px] w-[44px] cursor-pointer items-center justify-center rounded-full hover:bg-gray-300/40 ${activeTab === d.link ? 'bg-gray-300/40 shadow-lg' : ''}`}
+              className={`flex h-[44px] w-[44px] cursor-pointer items-center justify-center rounded-full hover:bg-white ${activeTab === d.link ? 'bg-white/40 shadow-lg' : ''}`}
               onClick={() => handleTabClick(d.link)}
               onKeyDown={(event) => handleKeyDown(event, d.link)}
               role="button"
