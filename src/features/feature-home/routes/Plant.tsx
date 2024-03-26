@@ -35,7 +35,7 @@ export const Plant = () => {
             effect="coverflow"
             grabCursor
             centeredSlides
-            slidesPerView={3}
+            // slidesPerView={3}
             coverflowEffect={{
               rotate: 0,
               scale: 0.8,
@@ -49,6 +49,20 @@ export const Plant = () => {
             modules={[EffectCoverflow, Pagination]}
             className="mySwiper h-full w-full"
             initialSlide={1}
+            breakpoints={{
+              640: {
+                slidesPerView: 1,
+                spaceBetween: 20,
+              },
+              768: {
+                slidesPerView: 3,
+                spaceBetween: 30,
+              },
+              1024: {
+                slidesPerView: 3,
+                spaceBetween: 40,
+              },
+            }}
           >
             {data.map((d, index) => (
               <SwiperSlide key={d.name}>
