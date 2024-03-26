@@ -37,7 +37,7 @@ const buttonVariants = cva(['inline-flex justify-center items-center rounded-[10
       32: 'h-[32px] text-[14px] font-semibold leading-normal',
       40: 'h-[40px] text-[16px] leading-[19.2px]',
       48: 'h-[48px] text-[16px] leading-[19.2px]',
-      52: 'h-[32px] sm:h-[44px] md:h-[52px] lg:h-[52px] text-[16px] leading-[24px]',
+      52: 'h-[32px] w-full h-full md:h-[52px] lg:max-h-[52px] text-[16px] leading-[24px]',
     },
   },
 });

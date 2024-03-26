@@ -55,7 +55,7 @@ const Navbar = ({ activeTab }: NavbarProps) => {
   };
 
   return (
-    <nav className="absolute left-[clac(50%-224px)] top-[79%] z-50  sm:left-[clac(50%-224px)] sm:top-[79%] md:left-[24px] md:top-[40px] lg:left-[24px] lg:top-[40px]">
+    <nav className="absolute left-[clac(50%-224px)] top-[79%] z-50 xs:top-[74%]  sm:left-[clac(50%-224px)] sm:top-[79%] md:left-[24px] md:top-[40px] lg:left-[24px] lg:top-[40px]">
       <div>
         <div className="flex gap-s8 rounded-full bg-background-white/40 p-s12 sm:flex  md:flex-col lg:flex-col">
           {tabItems.map((d) => (
