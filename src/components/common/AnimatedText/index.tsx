@@ -8,10 +8,10 @@ interface AnimatedTextProps {
   text: string;
   tab: string;
   textClassName?: string;
-  positionY?: number;
+  positionValue?: number;
 }
 
-const AnimatedText = ({ text, tab, textClassName, positionY }: AnimatedTextProps) => {
+const AnimatedText = ({ text, tab, textClassName, positionValue }: AnimatedTextProps) => {
   const router = useRouter();
 
   useEffect(() => {
@@ -20,7 +20,7 @@ const AnimatedText = ({ text, tab, textClassName, positionY }: AnimatedTextProps
         const textAnimation = gsap.timeline();
         textAnimation.to('.letter', {
           autoAlpha: 1,
-          y: positionY ?? 50,
+          y: positionValue ?? 50,
           stagger: {
             each: 0.06,
           },
@@ -38,7 +38,7 @@ const AnimatedText = ({ text, tab, textClassName, positionY }: AnimatedTextProps
     };
   }, [text, router.query.tabs]);
 
-  const combinedClassName = cn('flex w-full items-start justify-center', textClassName);
+  const combinedClassName = cn('flex w-full items-start', textClassName);
 
   return (
     <div className={combinedClassName}>

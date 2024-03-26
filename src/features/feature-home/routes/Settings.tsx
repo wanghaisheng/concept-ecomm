@@ -8,7 +8,7 @@ export const Settings = () => {
           tab="settings"
           text="Settings"
           textClassName="text-5xl  font-heavy leading-none drop-shadow-lg"
-          positionY={10}
+          positionValue={10}
         />
       </div>
       <div className="flex justify-center  pt-s12" />

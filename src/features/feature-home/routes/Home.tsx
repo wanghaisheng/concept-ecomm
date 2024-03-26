@@ -39,7 +39,7 @@ export const Home = () => {
     <>
       <div className="h-[72%] pt-s48  ">
         <AnimatedText
-          textClassName="text-7xl font-heavy leading-none drop-shadow-lg"
+          textClassName="text-7xl justify-center font-heavy leading-none drop-shadow-lg"
           tab="home"
           text={text}
         />
