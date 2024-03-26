@@ -54,7 +54,7 @@ export const Plant = () => {
               <SwiperSlide key={d.name}>
                 <div className="flex h-full items-center justify-center ">
                   <Image
-                    src={`/${d.image}.png`}
+                    src={`${process.env.NEXT_PUBLIC_PATH_PREFIX}/${d.image}.png`}
                     alt={`carousel-image-${index}`}
                     width={525}
                     height={500}
