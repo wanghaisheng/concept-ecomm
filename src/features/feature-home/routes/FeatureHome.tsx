@@ -51,9 +51,11 @@ export const FeatureHome = () => {
   return (
     <div className="min-h-full min-w-full flex-col">
       <TopHeader />
-      <div className="relative flex h-full min-w-full items-start justify-center  pt-[40px]">
+      <div className="relative flex h-full min-w-full items-center justify-center  sm:items-start md:items-start md:pt-[40px] lg:items-start lg:pt-[40px]">
         <Navbar activeTab={activeTab} />
-        <div className="flex h-[calc(100%-40px)] w-full max-w-[1072px] flex-col">{selectTab()}</div>
+        <div className="flex h-full w-full max-w-[1072px] flex-col gap-10 sm:gap-0  md:gap-0 lg:h-[calc(100%-40px)] lg:gap-0">
+          {selectTab()}
+        </div>
       </div>
     </div>
   );

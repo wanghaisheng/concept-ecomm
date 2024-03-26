@@ -29,8 +29,8 @@ export const Plant = () => {
 
   return (
     <>
-      <div className="flex h-full max-h-[72%] items-center justify-center">
-        <div className="h-full w-full">
+      <div className="mt-[25%] flex h-full max-h-[40%] items-center justify-center sm:mt-[10%] sm:max-h-[52%] md:mt-0  md:max-h-[72%] lg:mt-0 lg:max-h-[72%]">
+        <div className="h-full  w-full">
           <Swiper
             effect="coverflow"
             grabCursor
@@ -43,7 +43,7 @@ export const Plant = () => {
               modifier: 1.2,
               slideShadows: false,
             }}
-            pagination
+            pagination={{ clickable: true }}
             onSlideChange={handleSlideChange}
             modules={[EffectCoverflow, Pagination]}
             className="mySwiper h-full w-full"
@@ -71,6 +71,7 @@ export const Plant = () => {
                     alt={`carousel-image-${index}`}
                     width={525}
                     height={500}
+                    className="md:h-300 mb-8 h-auto w-[300px] sm:mb-0 md:mb-0 md:w-[300px] lg:mb-0"
                   />
                   <div className="absolute bottom-0 w-full text-center">
                     {index !== activeSlideIndex ? (

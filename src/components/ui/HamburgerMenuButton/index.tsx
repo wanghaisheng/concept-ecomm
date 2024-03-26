@@ -6,7 +6,6 @@ const HamburgerMenuButton = () => {
   const [menuIsOpen, setMenuIsOpen] = useState(false);
 
   const handleOnClick = () => {
-    // setIsActive(!isActive);
     setMenuIsOpen(!menuIsOpen);
   };
 
