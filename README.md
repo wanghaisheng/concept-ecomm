@@ -42,7 +42,6 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 - **Product Listings**: Browse through a variety of plant products.
 - **Cart Management**: Add items to your cart and manage your shopping experience.
-- **User Settings**: Customize your account settings and preferences.
 - **Responsive Design**: Optimized for mobile and desktop devices.
 
 ## Built With
