@@ -1,0 +1,23 @@
+ {"data" : [
+    {
+      "id": "3253b5f0-12d1-450e-a278-040469c66986",
+      "name": "Chinese Money",
+      "image": "plant-2",
+      "price": 100
+    },
+    {
+      "id": "e7425d3f-ce3d-4c25-aee0-14cc652e7578",
+      "name": "Montera Deliciosa",
+      "image": "plant-1",
+      "price": 224
+    },
+    {
+      "id": "bcf3c6a3-e19a-45fc-a2dd-e28600ff2972",
+      "name": "Infero Deliciosa",
+      "image": "plant-3",
+      "price": 220
+    }
+    
+  ],
+  "error" : false
+}
