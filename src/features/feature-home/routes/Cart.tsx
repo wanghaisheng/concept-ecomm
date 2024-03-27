@@ -66,7 +66,7 @@ export const Cart = () => {
 
   return (
     <>
-      <div className="mt-[25%] flex h-full max-h-[40%] items-center justify-center xs:mt-[8%]  sm:mt-[10%] sm:max-h-[52%] md:mt-0  md:max-h-[62%] lg:mt-0 lg:max-h-[72%]">
+      <div className="mt-[25%] flex h-full max-h-[50%] items-center justify-center  xs:mt-[0%]  sm:mt-[10%] sm:max-h-[52%] md:mt-0  md:max-h-[62%] lg:mt-0 lg:max-h-[72%]">
         <div className="h-full w-full overflow-y-scroll">
           <FormProvider {...methods}>
             <form onSubmit={methods.handleSubmit(onSubmit)}>
@@ -78,9 +78,9 @@ export const Cart = () => {
                 product.map((d: Product) => (
                   <div
                     key={d.id}
-                    className="flex  w-[98%] flex-wrap justify-between rounded-lg  border-b-[1px] border-white/80   px-[8px] py-[20px]  hover:bg-white/40"
+                    className="flex  w-[98%] flex-wrap justify-evenly rounded-lg border-b-[1px] border-white/80 px-[8px]  py-[20px] hover:bg-white/40   sm:justify-between md:justify-between  lg:justify-between"
                   >
-                    <div className="flex gap-s4">
+                    <div className="mr-[20%] flex gap-s4 sm:mr-0 md:mr-0 lg:mr-0">
                       <div className="flex items-center">
                         <FormCheckBox label="" name={`item-${d.id}`} />
                       </div>
@@ -98,7 +98,7 @@ export const Cart = () => {
                         </div>
                       </div>
                     </div>
-                    <div className="flex gap-s16">
+                    <div className="flex   gap-s16 ">
                       <div className="flex items-end ">
                         <Button
                           onClick={() => handleProductDelete(d.id)}
@@ -142,7 +142,7 @@ export const Cart = () => {
           </FormProvider>
         </div>
       </div>
-      <div className="flex justify-center  pt-s12">
+      <div className="flex justify-center pt-s12 xs:pt-0">
         <DescriptionTablet
           buttonComponent={{
             buttonText: 'Checkout',
