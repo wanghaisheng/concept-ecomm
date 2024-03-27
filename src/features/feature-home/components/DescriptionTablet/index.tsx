@@ -26,12 +26,12 @@ const DescriptionTablet = ({ name, price, isCart, buttonComponent }: Description
               Subtotal:
             </div>
             <div className="text-[14px] font-heavy leading-[18.2px] text-white drop-shadow-md sm:text-[24px] sm:leading-normal md:text-[24px] md:leading-normal lg:text-[24px] lg:leading-normal">
-              ${price}
+              $ {typeof price === 'number' ? price.toFixed(2) : '0.00'}
             </div>
           </div>
         ) : (
           <div className="text-[14px] font-heavy leading-[18.2px] text-white drop-shadow-md sm:text-[24px] sm:leading-normal md:text-[24px] md:leading-normal lg:text-[24px] lg:leading-normal">
-            ${price}
+            $ {typeof price === 'number' ? price.toFixed(2) : '0.00'}
           </div>
         )}
       </div>

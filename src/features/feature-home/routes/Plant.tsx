@@ -49,7 +49,11 @@ export const Plant = () => {
   };
 
   const handleClick = () => {
-    dispatch(setProductData({ productData: { ...selectedPlant, count: 1 } }));
+    dispatch(
+      setProductData({
+        productData: { ...selectedPlant, count: 1, originalPrice: selectedPlant.price },
+      })
+    );
     toast({
       id: 'add-items-cart',
       type: 'success',

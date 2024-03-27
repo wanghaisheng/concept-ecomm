@@ -6,8 +6,16 @@ import { toast } from '@/components/common/Toast';
 import Button from '@/components/ui/Button';
 import FormCheckBox from '@/components/ui/CheckBox/FormCheckBox';
 import DeleteIcon from '@/components/ui/Icons/20/icons/delete.svg';
+import MinusIcon from '@/components/ui/Icons/20/icons/minus.svg';
+import PlusIcon from '@/components/ui/Icons/20/icons/plus.svg';
 import CircleIcon from '@/components/ui/Icons/20/icons/tick-circle.svg';
-import { clearProductData, useAppDispatch, useAppSelector } from '@/redux';
+import {
+  addSameItem,
+  clearProductData,
+  deleteSameItem,
+  useAppDispatch,
+  useAppSelector,
+} from '@/redux';
 
 import DescriptionTablet from '../components/DescriptionTablet';
 
@@ -20,13 +28,13 @@ interface Product {
   image: string;
   id: string;
   count: number;
-  price: string;
+  price: number;
 }
 
 export const Cart = () => {
   const methods = useForm();
-  const dispatch = useAppDispatch();
 
+  const dispatch = useAppDispatch();
   const product = useAppSelector((state) => state?.cart?.productData);
 
   const handleProductDelete = (id: string) => {
@@ -38,9 +46,17 @@ export const Cart = () => {
       options: { duration: 300 },
     });
   };
+
+  const handleProductSubtract = (id: string) => {
+    dispatch(deleteSameItem({ id }));
+  };
+
+  const handleProductAdd = (id: string) => {
+    dispatch(addSameItem({ id }));
+  };
   const totalPrice =
     product && product.length > 0
-      ? product.reduce((sum: number, item: Product) => sum + parseFloat(item.price), 0)
+      ? product.reduce((sum: number, item: Product) => sum + item.price, 0)
       : 0;
 
   const onSubmit = () => {
@@ -83,18 +99,40 @@ export const Cart = () => {
                       </div>
                     </div>
                     <div className="flex gap-s16">
-                      <div className="flex items-center ">
-                        <Button onClick={() => handleProductDelete(d.id)} size={48} variant="icon">
+                      <div className="flex items-end ">
+                        <Button
+                          onClick={() => handleProductDelete(d.id)}
+                          size={48}
+                          variant="icon-small"
+                        >
                           <DeleteIcon />
                         </Button>
                       </div>
-                      <div className="flex items-center ">|</div>
+                      <div className="flex items-end  pb-s4">|</div>
 
-                      <div className="flex flex-col items-center ">
-                        <div className="text-[16px] font-normal leading-normal text-black">
-                          ${d.price}
+                      <div className="flex flex-col items-center gap-s12 ">
+                        <div className="flex w-full justify-end pr-s8 text-[16px] font-normal leading-normal text-black">
+                          ${typeof d.price === 'number' ? d.price.toFixed(2) : '0.00'}
                         </div>
-                        <div>Item counter</div>
+                        <div className="flex w-full  rounded-full bg-white/40">
+                          <Button
+                            onClick={() => handleProductAdd(d.id)}
+                            size={48}
+                            variant="icon-small"
+                          >
+                            <PlusIcon />
+                          </Button>
+                          <div className="flex items-center justify-center px-s12 text-black">
+                            {d.count}
+                          </div>
+                          <Button
+                            onClick={() => handleProductSubtract(d.id)}
+                            size={48}
+                            variant="icon-small"
+                          >
+                            <MinusIcon />
+                          </Button>
+                        </div>
                       </div>
                     </div>
                   </div>
