@@ -9,7 +9,7 @@ export const Home = () => {
     <>
       <div className="flex h-[72%] items-center pt-s48 sm:items-start md:items-start lg:items-start">
         <AnimatedText
-          textClassName="text-s24 sm:text-s32 md:text-5xl lg:text-7xl justify-center font-heavy leading-none drop-shadow-lg"
+          textClassName="text-s24 xs:text-s20 sm:text-s32 md:text-5xl lg:text-7xl justify-center font-heavy leading-none drop-shadow-lg"
           tab="home"
           text={text}
         />

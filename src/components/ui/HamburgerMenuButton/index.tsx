@@ -1,14 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import Button from '../Button';
 
-const HamburgerMenuButton = () => {
-  const [menuIsOpen, setMenuIsOpen] = useState(false);
+interface HamburgerMenuButtonProps {
+  handleOnClick: () => void;
+  menuIsOpen: boolean;
+}
 
-  const handleOnClick = () => {
-    setMenuIsOpen(!menuIsOpen);
-  };
-
+const HamburgerMenuButton = ({ handleOnClick, menuIsOpen }: HamburgerMenuButtonProps) => {
   return (
     <Button
       variant="unstyled"
