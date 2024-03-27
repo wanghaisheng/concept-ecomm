@@ -19,6 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       NEXT_PUBLIC_PATH_PREFIX: /concept-ecomm
+      NEXT_PUBLIC_API_URL: https://bumang.github.io/concept-ecomm/
     steps:
       - name: Checkout
         uses: actions/checkout@v4
