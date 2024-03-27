@@ -23,13 +23,13 @@ export const TopHeader = () => {
             <HamburgerMenuButton handleOnClick={toggleDrawer} menuIsOpen={isDrawerOpen} />
           </div>
           <div className="hidden gap-s8  md:flex lg:flex">
-            <Button variant="icon">
+            <Button size={48} variant="icon">
               <CategoryIcon />
             </Button>
-            <Button variant="icon">
+            <Button size={48} variant="icon">
               <NotificationIcon />
             </Button>
-            <Button variant="icon">
+            <Button size={48} variant="icon">
               <FilterIcon />
             </Button>
           </div>

@@ -57,6 +57,36 @@ body {
   top: 100%;
 }
 
+::-webkit-scrollbar {
+  width: 5px; /* Adjust the width of the scrollbar */
+ }
+ 
+ /* Define the scrollbar handle */
+ ::-webkit-scrollbar-thumb {
+  background: white;
+  border-radius: 5px; 
+
+ }
+ 
+ /* Optionally, define the scrollbar handle hover state */
+ ::-webkit-scrollbar-thumb:hover {
+  cursor: pointer;
+
+ }
+ 
+ /* For Firefox */
+ scrollbar-color: white transparent;
+
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+/* For Webkit-based browsers (Chrome, Safari, and Opera) */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
 
 
 
