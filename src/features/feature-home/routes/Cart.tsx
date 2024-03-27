@@ -7,7 +7,7 @@ export const Cart = () => {
         <AnimatedText
           tab="cart"
           text="Cart"
-          textClassName="text-5xl  font-heavy leading-none drop-shadow-lg"
+          textClassName="text-5xl xs:text-3xl  font-heavy leading-none drop-shadow-lg"
           positionYValue={10}
           positionXValue={20}
         />
