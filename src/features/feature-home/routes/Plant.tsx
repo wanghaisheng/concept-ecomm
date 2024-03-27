@@ -5,53 +5,35 @@ import { Swiper, SwiperClass, SwiperSlide } from 'swiper/react';
 
 import { toast } from '@/components/common/Toast';
 import AddIcon from '@/components/ui/Icons/12/icons/plus.svg';
+import { Loader } from '@/components/ui/Loader';
 import { setProductData, useAppDispatch } from '@/redux';
 
+import { useProductsQuery } from '../api/products';
 import DescriptionTablet from '../components/DescriptionTablet';
+import { ProductDataType } from '../types/products';
 
 import 'swiper/css';
 import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
 
 export const Plant = () => {
-  const data = [
-    {
-      id: '3253b5f0-12d1-450e-a278-040469c66986',
-      name: 'Chinese Money',
-      image: 'plant-2',
-      price: 100,
-    },
-    {
-      id: 'e7425d3f-ce3d-4c25-aee0-14cc652e7578',
-      name: 'Montera Deliciosa',
-      image: 'plant-1',
-      price: 224,
-    },
-    {
-      id: 'bcf3c6a3-e19a-45fc-a2dd-e28600ff2972',
-      name: 'Infero Deliciosa',
-      image: 'plant-3',
-      price: 220,
-    },
-  ];
-  // State to hold the currently selected plant
-  const [selectedPlant, setSelectedPlant] = useState(data[1]);
-  // State to hold the active slide index
+  const { data: productsData, isLoading } = useProductsQuery();
+
+  const [selectedPlant, setSelectedPlant] = useState(productsData?.data?.[1]);
   const [activeSlideIndex, setActiveSlideIndex] = useState(1);
 
   const dispatch = useAppDispatch();
 
-  // Handler for slide change
   const handleSlideChange = (swiper: SwiperClass) => {
     const { activeIndex } = swiper;
-    setSelectedPlant(data[activeIndex]);
+    setSelectedPlant(productsData?.data?.[activeIndex]);
     setActiveSlideIndex(activeIndex);
   };
 
   const handleClick = () => {
     dispatch(
       setProductData({
-        productData: { ...selectedPlant, count: 1, originalPrice: selectedPlant.price },
+        productData: { ...selectedPlant, count: 1, originalPrice: selectedPlant?.price },
       })
     );
     toast({
@@ -61,6 +43,10 @@ export const Plant = () => {
       options: { duration: 300 },
     });
   };
+
+  if (isLoading) {
+    return <Loader size="lg" />;
+  }
 
   return (
     <>
@@ -98,34 +84,35 @@ export const Plant = () => {
               },
             }}
           >
-            {data.map((d, index) => (
-              <SwiperSlide key={d.id}>
-                <div className="flex h-full items-center justify-center ">
-                  <Image
-                    src={`${process.env.NEXT_PUBLIC_PATH_PREFIX}/${d.image}.png`}
-                    alt={`carousel-image-${index}`}
-                    width={525}
-                    height={500}
-                    priority
-                    className="mb-8 h-[300px] w-[300px] xs:h-[200px] xs:w-[250px] sm:mb-0 sm:h-[300px] sm:w-[300px] md:mb-0 md:h-[280px] md:w-[525px] lg:mb-0 lg:h-[350px] lg:w-[525px]"
-                  />
-                  <div className="absolute bottom-0 w-full text-center">
-                    {index !== activeSlideIndex ? (
-                      <div className="flex flex-col gap-2">
-                        <div className="text-[18px] font-semibold leading-normal text-white drop-shadow-lg">
-                          {d.name}
+            {productsData &&
+              productsData?.data?.map((d: ProductDataType, index: number) => (
+                <SwiperSlide key={d.id}>
+                  <div className="flex h-full items-center justify-center ">
+                    <Image
+                      src={`${process.env.NEXT_PUBLIC_PATH_PREFIX}/${d.image}.png`}
+                      alt={`carousel-image-${index}`}
+                      width={525}
+                      height={500}
+                      priority
+                      className="mb-8 h-[300px] w-[300px] xs:h-[200px] xs:w-[250px] sm:mb-0 sm:h-[300px] sm:w-[300px] md:mb-0 md:h-[280px] md:w-[525px] lg:mb-0 lg:h-[350px] lg:w-[525px]"
+                    />
+                    <div className="absolute bottom-0 w-full text-center">
+                      {index !== activeSlideIndex ? (
+                        <div className="flex flex-col gap-2">
+                          <div className="text-[18px] font-semibold leading-normal text-white drop-shadow-lg">
+                            {d.name}
+                          </div>
+                          <div className="text-[18px] font-extrabold leading-normal text-white drop-shadow-lg">
+                            ${d.price}
+                          </div>
                         </div>
-                        <div className="text-[18px] font-extrabold leading-normal text-white drop-shadow-lg">
-                          ${d.price}
-                        </div>
-                      </div>
-                    ) : (
-                      <p />
-                    )}
+                      ) : (
+                        <p />
+                      )}
+                    </div>
                   </div>
-                </div>
-              </SwiperSlide>
-            ))}
+                </SwiperSlide>
+              ))}
           </Swiper>
         </div>
       </div>
@@ -136,8 +123,8 @@ export const Plant = () => {
             icon: <AddIcon />,
             handleOnClick: handleClick,
           }}
-          name={selectedPlant.name}
-          price={selectedPlant.price}
+          name={selectedPlant?.name ?? ''}
+          price={selectedPlant?.price ?? 0}
         />
       </div>
     </>
