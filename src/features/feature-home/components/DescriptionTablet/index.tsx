@@ -25,7 +25,7 @@ const DescriptionTablet = ({ name, price, isCart, buttonComponent }: Description
             <div className="text-[12px] font-bold leading-[18.2px] text-white drop-shadow-md sm:text-[20px] sm:leading-normal md:text-[20px] md:leading-normal lg:text-[20px] lg:leading-normal">
               Subtotal:
             </div>
-            <div className="text-[14px] font-heavy leading-[18.2px] text-white drop-shadow-md sm:text-[24px] sm:leading-normal md:text-[24px] md:leading-normal lg:text-[24px] lg:leading-normal">
+            <div className="flex  text-[14px] font-heavy leading-[18.2px] text-white drop-shadow-md sm:text-[24px] sm:leading-normal md:text-[24px] md:leading-normal lg:text-[24px] lg:leading-normal">
               $ {typeof price === 'number' ? price.toFixed(2) : '0.00'}
             </div>
           </div>
