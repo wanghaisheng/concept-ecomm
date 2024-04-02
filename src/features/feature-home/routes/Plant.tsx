@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
+import gsap from 'gsap';
 import { EffectCoverflow, Pagination } from 'swiper/modules';
 import { Swiper, SwiperClass, SwiperSlide } from 'swiper/react';
 
@@ -18,6 +20,7 @@ import 'swiper/css/pagination';
 
 export const Plant = () => {
   const { data: productsData, isLoading } = useProductsQuery();
+  const router = useRouter();
 
   const [selectedPlant, setSelectedPlant] = useState(productsData?.data?.[1]);
   const [activeSlideIndex, setActiveSlideIndex] = useState(1);
@@ -29,6 +32,21 @@ export const Plant = () => {
     setSelectedPlant(productsData?.data?.[activeIndex]);
     setActiveSlideIndex(activeIndex);
   };
+
+  useEffect(() => {
+    gsap.set('.parent-container > div, .image-container > div', {
+      y: -50,
+      opacity: 0,
+    });
+    if (router.query.tabs === 'plants') {
+      gsap.to('.parent-container > div, .image-container > div', {
+        y: 0,
+        opacity: 1,
+        stagger: 0.3,
+        duration: 1,
+      });
+    }
+  }, [router.query.tabs === 'plants']);
 
   const handleClick = () => {
     dispatch(
@@ -49,7 +67,7 @@ export const Plant = () => {
   }
 
   return (
-    <>
+    <div className="parent-container  h-full w-full">
       <div className="mt-[25%] flex h-full max-h-[40%] items-center justify-center xs:mt-[8%] sm:mt-[10%] sm:max-h-[52%] md:mt-0  md:max-h-[62%] lg:mt-0 lg:max-h-[72%]">
         <div className="h-full  w-full">
           <Swiper
@@ -86,7 +104,7 @@ export const Plant = () => {
           >
             {productsData &&
               productsData?.data?.map((d: ProductDataType, index: number) => (
-                <SwiperSlide key={d.id}>
+                <SwiperSlide className="image-container" key={d.id}>
                   <div className="flex h-full items-center justify-center ">
                     <Image
                       src={`${process.env.NEXT_PUBLIC_PATH_PREFIX}/${d.image}.png`}
@@ -127,6 +145,6 @@ export const Plant = () => {
           price={selectedPlant?.price ?? 0}
         />
       </div>
-    </>
+    </div>
   );
 };
