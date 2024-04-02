@@ -60,7 +60,7 @@ export const Plant = () => {
     return () => {
       window.removeEventListener('load', animation);
     };
-  }, [router.query.tabs === 'plants']);
+  }, [router.query.tabs, productsData]);
 
   const handleClick = () => {
     dispatch(
@@ -119,7 +119,7 @@ export const Plant = () => {
             {productsData &&
               productsData?.data?.map((d: ProductDataType, index: number) => (
                 <SwiperSlide className="image-container" key={d.id}>
-                  <div className="flex h-full items-center justify-center ">
+                  <div className="flex h-full items-center justify-center">
                     <Image
                       src={`${process.env.NEXT_PUBLIC_PATH_PREFIX}/${d.image}.png`}
                       alt={`carousel-image-${index}`}
