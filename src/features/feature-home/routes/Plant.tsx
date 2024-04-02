@@ -36,17 +36,17 @@ export const Plant = () => {
   useEffect(() => {
     const animation = () => {
       gsap.set('.parent-container > div, .image-container > div', {
-        y: -50,
+        y: -20,
         opacity: 0,
-        display: 'hidden',
+        visibility: 'hidden',
       });
       if (router.query.tabs === 'plants') {
         gsap.to('.parent-container > div, .image-container > div', {
           y: 0,
-          display: 'flex',
+          visibility: 'visible',
           opacity: 1,
-          stagger: 0.3,
-          duration: 1,
+          stagger: 0.2,
+          duration: 0.5,
         });
       }
     };
@@ -81,8 +81,8 @@ export const Plant = () => {
   }
 
   return (
-    <div className="parent-container   h-full w-full">
-      <div className="mt-[25%] flex h-full max-h-[40%] items-center justify-center xs:mt-[8%] sm:mt-[10%] sm:max-h-[52%] md:mt-0  md:max-h-[62%] lg:mt-0 lg:max-h-[72%]">
+    <div className="parent-container  h-full w-full">
+      <div className="invisible mt-[25%]  flex h-full max-h-[40%] items-center justify-center xs:mt-[8%] sm:mt-[10%] sm:max-h-[52%] md:mt-0  md:max-h-[62%] lg:mt-0 lg:max-h-[72%]">
         <div className="h-full  w-full">
           <Swiper
             effect="coverflow"
@@ -148,7 +148,7 @@ export const Plant = () => {
           </Swiper>
         </div>
       </div>
-      <div className="flex justify-center  pt-s12">
+      <div className="invisible flex justify-center  pt-s12">
         <DescriptionTablet
           buttonComponent={{
             buttonText: 'Add to Cart',
