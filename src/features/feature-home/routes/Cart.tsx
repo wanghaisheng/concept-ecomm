@@ -55,15 +55,15 @@ export const Cart = () => {
       gsap.set('.parent-container > div, .list-container > div', {
         y: -50,
         opacity: 0,
-        display: 'hidden',
+        visibility: 'hidden',
       });
       if (router.query.tabs === 'cart') {
         gsap.to('.parent-container > div, .list-container > div', {
           y: 0,
           opacity: 1,
-          stagger: 0.3,
-          duration: 1,
-          display: 'flex',
+          stagger: 0.1,
+          duration: 0.5,
+          visibility: 'visible',
         });
       }
     };
@@ -98,7 +98,7 @@ export const Cart = () => {
 
   return (
     <div className="parent-container  h-full w-full">
-      <div className="mt-[25%] flex h-full max-h-[50%] items-center justify-center  xs:mt-[0%]  sm:mt-[10%] sm:max-h-[52%] md:mt-0  md:max-h-[62%] lg:mt-0 lg:max-h-[72%]">
+      <div className="invisible mt-[25%] flex h-full max-h-[50%] items-center justify-center  xs:mt-[0%]  sm:mt-[10%] sm:max-h-[52%] md:mt-0  md:max-h-[62%] lg:mt-0 lg:max-h-[72%]">
         <div className="h-full w-full overflow-y-scroll">
           <FormProvider {...methods}>
             <form onSubmit={methods.handleSubmit(onSubmit)}>
@@ -174,7 +174,7 @@ export const Cart = () => {
           </FormProvider>
         </div>
       </div>
-      <div className="flex justify-center pt-s12 xs:pt-0">
+      <div className="invisible flex justify-center pt-s12 xs:pt-0">
         <DescriptionTablet
           buttonComponent={{
             buttonText: 'Checkout',

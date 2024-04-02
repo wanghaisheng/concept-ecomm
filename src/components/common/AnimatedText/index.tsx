@@ -64,7 +64,7 @@ const AnimatedText = ({
     <div className={combinedClassName}>
       {text.split('').map((letter) => {
         return letter === ' ' ? (
-          <div className=" letter invisible">&nbsp;</div>
+          <div className="letter invisible">&nbsp;</div>
         ) : (
           <div className="letter invisible" key={letter}>
             {letter}
