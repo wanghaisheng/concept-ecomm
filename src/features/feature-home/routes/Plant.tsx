@@ -34,18 +34,30 @@ export const Plant = () => {
   };
 
   useEffect(() => {
-    gsap.set('.parent-container > div, .image-container > div', {
-      y: -50,
-      opacity: 0,
-    });
-    if (router.query.tabs === 'plants') {
-      gsap.to('.parent-container > div, .image-container > div', {
-        y: 0,
-        opacity: 1,
-        stagger: 0.3,
-        duration: 1,
+    const animation = () => {
+      gsap.set('.parent-container > div, .image-container > div', {
+        y: -50,
+        opacity: 0,
       });
+      if (router.query.tabs === 'plants') {
+        gsap.to('.parent-container > div, .image-container > div', {
+          y: 0,
+          opacity: 1,
+          stagger: 0.3,
+          duration: 1,
+        });
+      }
+    };
+
+    if (document.readyState === 'complete') {
+      animation();
+    } else {
+      window.addEventListener('load', animation);
     }
+
+    return () => {
+      window.removeEventListener('load', animation);
+    };
   }, [router.query.tabs === 'plants']);
 
   const handleClick = () => {
