@@ -55,6 +55,7 @@ export const Cart = () => {
       gsap.set('.parent-container > div, .list-container > div', {
         y: -50,
         opacity: 0,
+        display: 'hidden',
       });
       if (router.query.tabs === 'cart') {
         gsap.to('.parent-container > div, .list-container > div', {
@@ -62,6 +63,7 @@ export const Cart = () => {
           opacity: 1,
           stagger: 0.3,
           duration: 1,
+          display: 'flex',
         });
       }
     };
