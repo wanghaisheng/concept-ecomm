@@ -51,18 +51,30 @@ export const Cart = () => {
   };
 
   useEffect(() => {
-    gsap.set('.parent-container > div, .list-container > div', {
-      y: -50,
-      opacity: 0,
-    });
-    if (router.query.tabs === 'cart') {
-      gsap.to('.parent-container > div, .list-container > div', {
-        y: 0,
-        opacity: 1,
-        stagger: 0.2,
-        duration: 0.8,
+    const animation = () => {
+      gsap.set('.parent-container > div, .list-container > div', {
+        y: -50,
+        opacity: 0,
       });
+      if (router.query.tabs === 'plants') {
+        gsap.to('.parent-container > div, .list-container > div', {
+          y: 0,
+          opacity: 1,
+          stagger: 0.3,
+          duration: 1,
+        });
+      }
+    };
+
+    if (document.readyState === 'complete') {
+      animation();
+    } else {
+      window.addEventListener('load', animation);
     }
+
+    return () => {
+      window.removeEventListener('load', animation);
+    };
   }, [router.query.tabs === 'cart']);
 
   const handleProductSubtract = (id: string) => {
