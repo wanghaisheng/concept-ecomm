@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
+import gsap from 'gsap';
 
 import { toast } from '@/components/common/Toast';
 import Button from '@/components/ui/Button';
@@ -33,6 +35,7 @@ interface Product {
 
 export const Cart = () => {
   const methods = useForm();
+  const router = useRouter();
 
   const dispatch = useAppDispatch();
   const product = useAppSelector((state) => state?.cart?.productData);
@@ -46,6 +49,21 @@ export const Cart = () => {
       options: { duration: 300 },
     });
   };
+
+  useEffect(() => {
+    gsap.set('.parent-container > div, .list-container > div', {
+      y: -50,
+      opacity: 0,
+    });
+    if (router.query.tabs === 'cart') {
+      gsap.to('.parent-container > div, .list-container > div', {
+        y: 0,
+        opacity: 1,
+        stagger: 0.2,
+        duration: 0.8,
+      });
+    }
+  }, [router.query.tabs === 'cart']);
 
   const handleProductSubtract = (id: string) => {
     dispatch(deleteSameItem({ id }));
@@ -65,7 +83,7 @@ export const Cart = () => {
   };
 
   return (
-    <>
+    <div className="parent-container  h-full w-full">
       <div className="mt-[25%] flex h-full max-h-[50%] items-center justify-center  xs:mt-[0%]  sm:mt-[10%] sm:max-h-[52%] md:mt-0  md:max-h-[62%] lg:mt-0 lg:max-h-[72%]">
         <div className="h-full w-full overflow-y-scroll">
           <FormProvider {...methods}>
@@ -78,7 +96,7 @@ export const Cart = () => {
                 product.map((d: Product) => (
                   <div
                     key={d.id}
-                    className="flex  w-[98%] flex-wrap justify-evenly rounded-lg border-b-[1px] border-white/80 px-[8px]  py-[20px] hover:bg-white/40   sm:justify-between md:justify-between  lg:justify-between"
+                    className="list-container flex  w-[98%] flex-wrap justify-evenly rounded-lg border-b-[1px] border-white/80 px-[8px]  py-[20px] hover:bg-white/40   sm:justify-between md:justify-between  lg:justify-between"
                   >
                     <div className="mr-[20%] flex gap-s4 sm:mr-0 md:mr-0 lg:mr-0">
                       <div className="flex items-center">
@@ -154,6 +172,6 @@ export const Cart = () => {
           name="Summary Order"
         />
       </div>
-    </>
+    </div>
   );
 };
