@@ -38,10 +38,12 @@ export const Plant = () => {
       gsap.set('.parent-container > div, .image-container > div', {
         y: -50,
         opacity: 0,
+        display: 'hidden',
       });
       if (router.query.tabs === 'plants') {
         gsap.to('.parent-container > div, .image-container > div', {
           y: 0,
+          display: 'flex',
           opacity: 1,
           stagger: 0.3,
           duration: 1,
@@ -79,7 +81,7 @@ export const Plant = () => {
   }
 
   return (
-    <div className="parent-container  h-full w-full">
+    <div className="parent-container   h-full w-full">
       <div className="mt-[25%] flex h-full max-h-[40%] items-center justify-center xs:mt-[8%] sm:mt-[10%] sm:max-h-[52%] md:mt-0  md:max-h-[62%] lg:mt-0 lg:max-h-[72%]">
         <div className="h-full  w-full">
           <Swiper
